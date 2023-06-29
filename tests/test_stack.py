@@ -26,3 +26,9 @@ class TestStack(unittest.TestCase):
         assert stack.top.data == 'data1'
         # данные удаленного элемента
         assert data == 'data2'
+
+    def test_str(self):
+        self.stack.push('data1')
+        self.stack.push('data2')
+        self.stack.push("data3")
+        assert str(self.stack) == "data3 data2 data1"

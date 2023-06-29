@@ -18,6 +18,20 @@ class Stack:
         """Конструктор класса Stack"""
         self.top = None
 
+    def __str__(self):
+        return f"{' '.join([str(item) for item in self])}"
+
+    def __iter__(self):
+        """
+        Возвращает итератор для стека
+
+        :return: итератор для стека
+        """
+        current = self.top
+        while current is not None:
+            yield current.data
+            current = current.next_node
+
     def push(self, data):
         """
         Метод для добавления элемента на вершину стека
