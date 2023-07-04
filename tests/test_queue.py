@@ -21,3 +21,12 @@ class TestStack(unittest.TestCase):
         self.queue.enqueue('data2')
         self.queue.enqueue('data3')
         assert str(self.queue) == "data1 data2 data3"
+
+    def test_dequeue(self):
+        self.queue.enqueue('data1')
+        self.queue.enqueue('data2')
+        self.queue.enqueue('data3')
+        assert self.queue.dequeue() == 'data1'
+        assert self.queue.dequeue() == 'data2'
+        assert self.queue.dequeue() == 'data3'
+        assert self.queue.dequeue() is None
