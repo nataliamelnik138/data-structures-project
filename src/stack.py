@@ -18,19 +18,18 @@ class Stack:
         """Конструктор класса Stack"""
         self.top = None
 
-    def __str__(self):
-        return f"{' '.join([str(item) for item in self])}"
+    def __str__(self) -> str:
+        """Вывод данных стека в строковом представлении"""
+        node = self.top
+        if node is None:
+            return str(None)
 
-    def __iter__(self):
-        """
-        Возвращает итератор для стека
-
-        :return: итератор для стека
-        """
-        current = self.top
-        while current is not None:
-            yield current.data
-            current = current.next_node
+        stack_string = ''
+        while node:
+            stack_string += f'{str(node.data)} '
+            node = node.next_node
+        stack_string = stack_string.strip(' ')
+        return stack_string
 
     def push(self, data):
         """
