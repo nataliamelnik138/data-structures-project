@@ -33,17 +33,6 @@ class Queue:
             self.tail.next_node = new_node
             self.tail = new_node
 
-    def __iter__(self):
-        """
-        Возвращает итератор для очереди
-
-        :return: итератор для очереди
-        """
-        current = self.head
-        while current is not None:
-            yield current.data
-            current = current.next_node
-
     def dequeue(self):
         """
         Метод для удаления элемента из очереди. Возвращает данные удаленного элемента
@@ -56,6 +45,17 @@ class Queue:
         self.head = self.head.next_node
         return result
 
-    def __str__(self):
-        """Магический метод для строкового представления объекта"""
-        return f"{' '.join([str(item) for item in self])}"
+    def __str__(self) -> str:
+        """Вывод данных односвязного списка в строковом представлении"""
+        node = self.head
+        if node is None:
+            return str(None)
+
+        queue_string = ''
+        while node:
+            queue_string += f'{str(node.data)} '
+            node = node.next_node
+        queue_string = queue_string.strip(' ')
+
+        return queue_string
+
